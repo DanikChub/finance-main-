@@ -1,0 +1,34 @@
+.AccountsPage {
+    text-align: center;
+    
+}
+
+span {
+    font-size: 40px;
+    margin-left: 50px;
+}
+
+.List {
+    display: flex;
+    width: 95%;
+    color: #fff;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.Tr {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+}
+
+.Td {
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+}

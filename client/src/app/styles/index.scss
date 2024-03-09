@@ -1,0 +1,41 @@
+@import "variables/global";
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+.app {
+    position: relative;
+  
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    color: #fff;
+}
+
+.icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    fill: #fff;
+    z-index:1000;
+}
+
+.content-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: .2s;
+    z-index: 0;
+}
+
+.blackout {
+    filter: blur(2px) brightness(50%);
+}

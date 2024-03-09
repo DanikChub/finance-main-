@@ -1,0 +1,57 @@
+.MainPage {
+    
+    margin: 40px;
+}
+
+.IncomeExpensiveMenu {
+    display: flex;
+    justify-content: space-around;
+}
+.FinanceLine {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+.Incomes {
+    color: #fff;
+    font-size: 25px;
+}
+
+.Expensive {
+    color: #fff;
+    font-size: 25px;
+}
+
+.active {
+    border-bottom: 2px solid #fff;
+}
+
+
+
+.Period {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.PeriodChildren {
+    color: #fff;
+    font-size: 16px;
+    
+}
+
+.periodActive {
+    color: rgb(146, 219, 73);
+    border-bottom: 2px solid rgb(146, 219, 73);
+}
+
+
+.InformationWidget {
+    position: relative;
+    margin-top: 20px;
+    height: 250px;
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+}
+
