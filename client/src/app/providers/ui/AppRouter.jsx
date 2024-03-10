@@ -7,10 +7,10 @@ import { notAuthRouteConfig, routeConfig } from '../../../shared/config/routeCon
 
 
 const AppRouter = () => {
-    const {user} = useContext(Context);
+    const user = useContext(Context);
     return (
         <Routes>
-            {user.isAuth && routeConfig.map(({path, element}) => (
+            {user.user.isAuth && routeConfig.map(({path, element}) => (
                 <Route
                     key={path}
                     element={element}

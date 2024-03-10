@@ -32,7 +32,7 @@ const AccountsPage = () => {
             <h1>{amount}$</h1>
             <div className={classNames(cls.List, {}, [])}>
                 {arrayData.map(({id, name, amount}) => (
-                    <div className={cls.Tr}>
+                    <div key={id} className={cls.Tr}>
 
                         <div className={cls.Td}>{name}</div>
                         <div className={cls.Td}>{amount}$</div>

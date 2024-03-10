@@ -19,6 +19,12 @@
     transition: .2s linear;
 }
 
+.Link:first-child {
+    border-bottom: 1px solid #fff;
+    padding: 20px 40px;
+}
+
+
 .Link:hover {
     color: #fff;
     background-color: rgb(171, 171, 171);

@@ -28,7 +28,7 @@ function makeDiagram(array, ctx, width, height) {
         )
     })
 
-    console.log(diagramArray);
+    
     let startAngle = 0;
     let sliceAngle = 0;
 

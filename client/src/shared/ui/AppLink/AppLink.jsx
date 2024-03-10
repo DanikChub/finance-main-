@@ -8,11 +8,12 @@ export const AppLink = (props) => {
         children, 
         className, 
         to, 
+        onClick,
         ...otherProps
     } = props;
 
     return (
-        <div className={classNames(cls.AppLink, {}, [className])}>
+        <div onClick={onClick} className={classNames(cls.AppLink, {}, [className])}>
             <Link 
                 to={to} 
                 {...otherProps}

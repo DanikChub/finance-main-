@@ -5,7 +5,7 @@ import App from './app/App.jsx'
 import { createContext } from 'react'
 import UserStore from './shared/store/UserStore'
 
-export const Context = createContext(null);
+export const Context = createContext({user: new UserStore()});
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Context.Provider value={{
     user: new UserStore(),

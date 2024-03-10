@@ -8,9 +8,9 @@ import cls from './MainPage.module.scss';
 
 const arrayData = [
     {id: 1, date: '01.02.2024', amount: 100, category: 'Еда', account: 'tinkof'},
-    {id: 1, date: '01.02.2024', amount: 195, category: 'Еда', account: 'tinkof'},
-    {id: 1, date: '01.02.2024', amount: 256, category: 'Еда', account: 'tinkof'},
-    {id: 1, date: '01.02.2024', amount: 145, category: 'Еда', account: 'tinkof'},
+    {id: 10, date: '01.02.2024', amount: 195, category: 'Еда', account: 'tinkof'},
+    {id: 11, date: '01.02.2024', amount: 256, category: 'Еда', account: 'tinkof'},
+    {id: 12, date: '01.02.2024', amount: 145, category: 'Еда', account: 'tinkof'},
     {id: 2, date: '02.02.2024', amount: 300, category: 'Еда', account: 'tinkof'},
     {id: 3, date: '03.02.2024', amount: 100, category: 'Еда', account: 'tinkof'},
     {id: 4, date: '04.02.2024', amount: 300, category: 'Еда', account: 'tinkof'},

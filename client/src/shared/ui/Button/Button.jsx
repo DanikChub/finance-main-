@@ -1,4 +1,6 @@
 import React from 'react';
+import { classNames } from '../../lib/classNames/classNames';
+import cls from './Button.module.scss';
 
 const Button = (props) => {
     const {
@@ -7,9 +9,9 @@ const Button = (props) => {
         ...otherProps
     } = props;
     return (
-        <button>
-            
-        </button>
+        <div className={classNames(cls.Button, {}, [className])} {...otherProps}>
+            {children}
+        </div>
     );
 };
 
