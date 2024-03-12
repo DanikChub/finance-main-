@@ -5,7 +5,8 @@ import { CategoriesPage } from "../../../pages/CategoriesPage";
 import { LoginPage } from "../../../pages/LoginPage";
 import { UserPage } from "../../../pages/UserPage";
 import {RegistrationPage} from "../../../pages/RegistrationPage";
-import {MAIN_ROUTE, ACCOUNTS_ROUTE, GRAFICS_ROUTE, CATEGORIES_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, USER_ROUTE} from '../../../shared/utils/consts/consts'
+import {MAIN_ROUTE, ACCOUNTS_ROUTE, GRAFICS_ROUTE, CATEGORIES_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, USER_ROUTE, MAKE_INCOME_ROUTE} from '../../../shared/utils/consts/consts'
+import { MakeIncome } from "../../../pages/MakeIncome";
 
 
 export const routeConfig = [
@@ -28,6 +29,10 @@ export const routeConfig = [
     {
         path: USER_ROUTE,
         element: <UserPage/>
+    },
+    {
+        path: MAKE_INCOME_ROUTE,
+        element: <MakeIncome/>
     }
 ]
 

@@ -27,31 +27,3 @@
 }
 
 
-
-.Period {
-    padding-top: 10px;
-    display: flex;
-    justify-content: space-around;
-}
-
-.PeriodChildren {
-    color: #fff;
-    font-size: 16px;
-    
-}
-
-.periodActive {
-    color: rgb(146, 219, 73);
-    border-bottom: 2px solid rgb(146, 219, 73);
-}
-
-
-.InformationWidget {
-    position: relative;
-    margin-top: 20px;
-    height: 250px;
-    width: 100%;
-    background-color: var(--primary-color);
-    border-radius: 5px;
-}
-

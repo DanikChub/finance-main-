@@ -7,11 +7,11 @@ import { ACCOUNTS_ROUTE, CATEGORIES_ROUTE, GRAFICS_ROUTE, MAIN_ROUTE, REGISTRATI
 
 import cls from './Navbar.module.scss'
 
-const Navbar = ({active, setActive, user}) => {
+const Navbar = ({active, setActive, user, ...otherProps}) => {
     
     
     return (
-        <div className={classNames(cls.Navbar, {}, [active?cls.active:''])}>
+        <div className={classNames(cls.Navbar, {}, [active?cls.active:''])} {...otherProps}>
             {
                 user.isAuth
                 ? 

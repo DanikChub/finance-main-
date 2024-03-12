@@ -1,0 +1,18 @@
+.AppLoader {
+    width: 0;
+    height: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(92, 212, 104);
+    animation: AppLoaderAnimate 1.5s ease-in;
+}
+
+@keyframes AppLoaderAnimate {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}

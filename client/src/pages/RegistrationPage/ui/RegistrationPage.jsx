@@ -4,16 +4,17 @@ import {classNames} from '../../../shared/lib/classNames/classNames';
 import {Context } from '../../../main';
 import {registration, getUserById} from '../../../shared/http/userAPI';
 import cls from './RegistrationPage.module.scss';
-import { Navigate } from 'react-router-dom';
 import Input from '../../../shared/ui/Input/Input';
 import { MAIN_ROUTE } from '../../../shared/utils/consts/consts';
 import Button from '../../../shared/ui/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 const RegistrationPage = () => {
     const {user} = useContext(Context);
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
     const [nameInput, setNameInput] = useState('');
+    const navigate = useNavigate();
 
     const click = async (e) => {
         e.preventDefault();
@@ -23,13 +24,16 @@ const RegistrationPage = () => {
             
             data = await registration(emailInput, passwordInput, nameInput);
             
-            await getUserById(data.id).then((data) => user.setUser(data))
-            
-            user.setIsAuth(true);
-            Navigate(MAIN_ROUTE);
+            await getUserById(data.id)
+                .then((data) => user.setUser(data))
+                .then((data) => user.setIsAuth(true))
+                .catch((e) => console.log(e));
+
+           
         } catch (e) {
-            alert(e.response.data.message);
+            console.log(e);
         }
+        navigate(MAIN_ROUTE);
     }
 
     return (

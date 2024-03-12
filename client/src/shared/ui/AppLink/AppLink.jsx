@@ -1,25 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { classNames } from '../../lib/classNames/classNames';
 import cls from './AppLink.module.scss';
 
 export const AppLink = (props) => {
+    const navigate = useNavigate();
     const {
         children, 
         className, 
-        to, 
         onClick,
+        to, 
         ...otherProps
     } = props;
 
+    const handleClick = () => {
+        onClick();
+        navigate(to);
+    }
+
     return (
-        <div onClick={onClick} className={classNames(cls.AppLink, {}, [className])}>
-            <Link 
-                to={to} 
-                {...otherProps}
-            >
-                {children}
-            </Link>
+        <div 
+            onClick={handleClick} 
+            className={classNames(cls.AppLink, {}, [className])}
+            {...otherProps}
+        >     
+            {children}
         </div>
         
     );

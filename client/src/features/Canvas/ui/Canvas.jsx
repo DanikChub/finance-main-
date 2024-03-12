@@ -18,7 +18,9 @@ function makeDiagram(array, ctx, width, height) {
     array.forEach((income, i) => {
         count+= income.amount;
     })
+
     array.forEach((income, i) => {
+        
         diagramArray.push(
             {
                 percent: income.amount/count, 
@@ -58,7 +60,7 @@ const Canvas = ({arrayDataWithPeriod, canvasWidth, canvasHeight}) => {
     const updateCanvas = () => {
         const ctx = canvas.current.getContext('2d');
         ctx.clearRect(0,0,1000,1000);
-    makeDiagram(arrayDataWithPeriod, ctx, canvasWidth, canvasHeight);
+        makeDiagram(arrayDataWithPeriod, ctx, canvasWidth, canvasHeight);
         
     }
     return (
