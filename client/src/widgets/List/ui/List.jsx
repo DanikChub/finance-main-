@@ -5,30 +5,39 @@ import { classNames } from '../../../shared/lib/classNames/classNames';
 import cls from './List.module.scss'
 
 const List = ({arrayDataWithPeriod}) => {
-    const [arrayWithCategories, setArrayWithCategories] = useState([]);
+  
     const [isLoaded, setIsLoaded] = useState(false);
+    const [arrayWithCategory, setArrayWithCategory] = useState([]);
     useEffect(() => {
-        setArrayWithCategories(arrayDataWithPeriod);
-        const probArray = arrayWithCategories;
+        setIsLoaded(false);
+        setArrayWithCategory(arrayDataWithPeriod);
+        let probArray = arrayWithCategory;
         
-        arrayDataWithPeriod.forEach((incomes, i) => {
-            
-            getIncomesCategoriesByDate(incomes.category_id)
-                .then(data => probArray[i].category_id={color: data.color,name: data.name})
-                .then(data => setArrayWithCategories(probArray))
-                .finally(data => setIsLoaded(true));
+        arrayDataWithPeriod.forEach((income, i) => {
+            getIncomesCategoriesByDate(income.category_id)
+                .then(data => {
+                    probArray[i].category = data;
+                    setArrayWithCategory(probArray)
+                })
+                
+                
         })
+        setTimeout(() => {
+            setIsLoaded(true);
+        }, 0)
         
-    }, [])
+    }, [arrayDataWithPeriod])
+
+   
     return ( 
         <div className={classNames(cls.List, {}, [])}>
             {
             isLoaded? 
-                arrayWithCategories.map(({id, category_id, date, amount}) => 
+                arrayWithCategory.map(({id, date, amount, category}) => 
                 (
                     <div key={id} className={cls.Tr}>
                         
-                        <div style={{backgroundColor: category_id.color}} className={cls.Td}>{category_id.name}</div>
+                        <div style={{backgroundColor: category.color}} className={cls.Td}>{category.name}</div>
                         <div className={cls.Td}>{date}</div>
                         <div className={cls.Td}>{amount}</div>
                     </div>

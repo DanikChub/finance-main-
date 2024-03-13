@@ -14,9 +14,12 @@ class incomeCategoryControllerClass {
             .from('income_category')
             .select('*')
             .eq('id', req.params.id)
-            
         
-        return res.json(data[0]);
+
+        if (data) {
+            return res.json(data[0]);
+        }
+        return res.json(error);
     }
 }
 

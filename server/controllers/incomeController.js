@@ -12,7 +12,9 @@ class incomeControllerClass {
             .gte('date', req.query.from)
             .lte('date', req.query.to)
 
-        if (data.length > 0) {
+        if (data) {
+            
+            
             let finallyArray = data;
             let category = finallyArray[0].category_id;
             countArray = [
@@ -22,6 +24,7 @@ class incomeControllerClass {
                     date: finallyArray[0].date,
                     user_id: finallyArray[0].user_id,
                     category_id: finallyArray[0].category_id, 
+                    category: finallyArray[0].category, 
                 }
             ]
             finallyArray.forEach((income, i) => {
@@ -31,7 +34,8 @@ class incomeControllerClass {
                         amount: 0,
                         date: income.date,
                         user_id: income.user_id,
-                        category_id: income.category_id,   
+                        category_id: income.category_id,  
+                        category: income.category,  
                     })
                     category = income.category_id;
                 }
@@ -46,19 +50,23 @@ class incomeControllerClass {
             })
         }
         
-        
         return res.json(countArray);
     }
     async create (req, res) {
         const {amount, date, user_id, category_id} = req.body;
-    
+        let obj = {
+            color: 'transparent',
+            name: 'no'
+        }
+        
         const {data, error} = await supabase
             .from('income')
             .insert([{
                     amount: amount,
                     date: date,
                     user_id: user_id,
-                    category_id: category_id
+                    category_id: category_id,
+                    category: obj
                 }])
             .select()
             

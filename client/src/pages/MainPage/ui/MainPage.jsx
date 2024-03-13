@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { Context } from '../../../main';
 import { classNames } from '../../../shared/lib/classNames/classNames';
-import { AppLink } from '../../../shared/ui/AppLink/AppLink';
+import { getIncomesByDate } from '../../../shared/http/incomesAPI';
+import dateformat from 'dateformat';
 import InformationWidget from '../../../widgets/InformationWidget/ui/InformationWidget';
 import {List} from '../../../widgets/List'
+import { getIncomesCategoriesByDate } from '../../../shared/http/incomesAPI';
 import cls from './MainPage.module.scss';
 
 
@@ -13,7 +14,60 @@ import cls from './MainPage.module.scss';
 const MainPage = () => {
     const {user} = useContext(Context);
     const [incomeActive, setIncomeActive] = useState(true);
+    const [periodActive, setPeriodActive] = useState('day');
     const [arrayDataWithPeriod, setArrayDataWithPeriod] = useState([]);
+
+    useEffect(() => {
+        
+        const todayDate = new Date();
+        const today = dateformat(todayDate, 'yyyy-mm-dd');
+        let todayClone;
+        let todayPlusSeven;
+        let result;
+        
+        switch (periodActive) {
+            case 'day':
+                getIncomesByDate(user.id, today, today)
+                    .then(data => setArrayDataWithPeriod(data))
+                
+                break;
+            case 'week':
+                
+                todayClone = today;
+                todayPlusSeven = todayClone.split('-');
+                todayPlusSeven[2] = Number(todayClone.split('-')[2])+7;
+                result = todayPlusSeven.join('-');
+                
+                getIncomesByDate(user.id, today, result)
+                    .then(data => setArrayDataWithPeriod(data))
+                    .then(data => console.log(arrayDataWithPeriod))    
+             
+                break;
+            case 'month':
+
+                todayClone = today;
+                todayPlusSeven = todayClone.split('-');
+                todayPlusSeven[1] = `0${Number(todayClone.split('-')[1])+1}`;
+                result = todayPlusSeven.join('-');
+                console.log(result);
+                
+                getIncomesByDate(user.id, today, today)
+                .then(data => setArrayDataWithPeriod(data))
+                .then(data => console.log(arrayDataWithPeriod))
+                
+                break;
+            case 'year':
+                
+                getIncomesByDate(user.id, today, today)
+                .then(data => setArrayDataWithPeriod(data))
+                
+                break;     
+        }
+   
+        
+    }, [periodActive])
+
+   
     
     return (
         <div className={classNames(cls.MainPage, {}, [])}>
@@ -32,9 +86,13 @@ const MainPage = () => {
                     Доходы
                 </div>
             </div>
-            <InformationWidget userId={user.id} arrayDataWithPeriod={arrayDataWithPeriod} setArrayDataWithPeriod={setArrayDataWithPeriod}/>
+            <InformationWidget  
+                periodActive={periodActive} 
+                setPeriodActive={setPeriodActive}
+                arrayDataWithPeriod={arrayDataWithPeriod} 
+            />
             
-            <List key={2} arrayDataWithPeriod={arrayDataWithPeriod} ></List>
+            <List key={2} arrayDataWithPeriod={arrayDataWithPeriod}></List>
            
  
         </div>
