@@ -19,11 +19,11 @@ const CategoriesPage = () => {
             <div className={classNames(cls.List, {}, [])}>
                 {
                 isLoaded? 
-                    incomesCategories.map(({id, name, color}) => 
+                    incomesCategories.map(({id, name, color, image}) => 
                     (
-                        <div key={id} className={cls.Tr}>
-                            
-                            <div style={{backgroundColor: color}} className={cls.Td}>{name}</div>
+                        <div style={{backgroundColor: color}} key={id} className={cls.Tr}>
+                            <img src={"http://localhost:3000/" + image} width={35} height={35} className={cls.Td_image}/>
+                            <div  className={cls.Td}>{name}</div>
                             
                         </div>
                     ))

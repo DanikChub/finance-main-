@@ -49,10 +49,9 @@ const List = ({arrayDataWithPeriod, isLoaded, setIsLoaded}) => {
             isLoaded? 
                 arrayWithCategory.map(({id, date, amount, category}) => 
                 (
-                    <div onClick={() => navigate(`${INCOMES_ROUTE}/${category.id}`)} key={id} className={cls.Tr}>
-                        
-                        <div style={{backgroundColor: category.color}} className={cls.Td}>{category.name}</div>
-                        <div className={cls.Td}>{date}</div>
+                    <div style={{backgroundColor: category.color}} onClick={() => navigate(`${INCOMES_ROUTE}/${category.id}`)} key={id} className={cls.Tr}>
+                        <img  className={cls.Td_image} src={"http://localhost:3000/" + category.image} width="25px" height="25px"></img>
+                        <div className={cls.Td}>{category.name}</div>
                         <div className={cls.Td}>{amount}</div>
                     </div>
                 ))
