@@ -44,19 +44,20 @@ class userControllerClass {
 
  async login(req, res, next) {
     const {email, password} = req.body;
-    const {user, error} = await supabase
+    const {data, error} = await supabase
         .from('users')
         .select("*")
         .eq('email', email)
-    if (!user.data[0]) {
+    
+    if (!data[0]) {
         return next(ApiError.internal('Пользователь с таким именем не найден!'))
     }
 
-    let comparePassword = bcrypt.compareSync(password, user.password);
+    let comparePassword = bcrypt.compareSync(password, data[0].password);
     if (!comparePassword) {
         return next(ApiError.internal('Указаный пароль не верен!'))
     }
-    const token = generateJwt(user.id, user.email)
+    const token = generateJwt(data[0].id, data[0].email)
     
     return res.json({token});
  }

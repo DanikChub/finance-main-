@@ -4,6 +4,7 @@ import { incomeCategoryController } from "../controllers/incomeCategoryControlle
 
 incomeCategoryRouter.post('/create', incomeCategoryController.create);
 incomeCategoryRouter.get('/', incomeCategoryController.getAll);
+incomeCategoryRouter.get('/with_parametr', incomeCategoryController.getAllWithParametr);
 incomeCategoryRouter.get('/:id', incomeCategoryController.getOne);
 
 
