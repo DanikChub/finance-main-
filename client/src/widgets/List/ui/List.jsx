@@ -3,28 +3,42 @@ import { useEffect } from 'react';
 import { getIncomesCategoriesByDate } from '../../../shared/http/incomesAPI';
 import { classNames } from '../../../shared/lib/classNames/classNames';
 import cls from './List.module.scss'
+import { useNavigate } from 'react-router-dom';
+import { INCOMES_ROUTE } from '../../../shared/utils/consts/consts';
 
-const List = ({arrayDataWithPeriod}) => {
+const List = ({arrayDataWithPeriod, isLoaded, setIsLoaded}) => {
   
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [arrayWithCategory, setArrayWithCategory] = useState([]);
+    const [arrayWithCategory, setArrayWithCategory] = useState(arrayDataWithPeriod);
+    const [categoryArray, setCategoryArray] = useState([]);
+    const navigate = useNavigate();
+    useEffect(() => {
+        
+        const probArray = arrayWithCategory;
+        arrayWithCategory.forEach((income, i) => { 
+            categoryArray.forEach((category, j) => {   
+                if (income.category_id == category.id) {
+                    probArray[i].category = category;
+                }
+            })
+            
+        })
+        setArrayWithCategory(probArray)
+        setIsLoaded(true)
+    }, [categoryArray])
     useEffect(() => {
         setIsLoaded(false);
-        setArrayWithCategory(arrayDataWithPeriod);
-        let probArray = arrayWithCategory;
         
-        arrayDataWithPeriod.forEach((income, i) => {
-            getIncomesCategoriesByDate(income.category_id)
-                .then(data => {
-                    probArray[i].category = data;
-                    setArrayWithCategory(probArray)
-                })
-                
-                
+        const arrayId = [];
+        
+        arrayWithCategory.forEach((income, i) => {
+            arrayId.push(income.category_id);
         })
-        setTimeout(() => {
-            setIsLoaded(true);
-        }, 0)
+        getIncomesCategoriesByDate(arrayId)
+            .then(data => {
+                setCategoryArray(data)
+            })
+            
+            
         
     }, [arrayDataWithPeriod])
 
@@ -35,7 +49,7 @@ const List = ({arrayDataWithPeriod}) => {
             isLoaded? 
                 arrayWithCategory.map(({id, date, amount, category}) => 
                 (
-                    <div key={id} className={cls.Tr}>
+                    <div onClick={() => navigate(`${INCOMES_ROUTE}/${category.id}`)} key={id} className={cls.Tr}>
                         
                         <div style={{backgroundColor: category.color}} className={cls.Td}>{category.name}</div>
                         <div className={cls.Td}>{date}</div>

@@ -25,7 +25,7 @@ function App() {
         .then(data => console.log(user.user.data[0].id))
         .finally(data => setIsLoaded(true))
         .catch(e => console.log(e))
-    })  
+    }).catch(error => setIsLoaded(true))
   }, [])
 
   const handleTouchMove = (e) => {

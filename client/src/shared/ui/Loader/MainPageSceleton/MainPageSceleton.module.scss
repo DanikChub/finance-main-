@@ -1,0 +1,38 @@
+.InformationWidget {
+    margin-top: 90px;
+    height: 250px;
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    animation: miganie 1s linear infinite alternate;
+}
+
+.List {
+    display: flex;
+    width: 100%;
+    color: #fff;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    overflow: scroll;
+    max-height: 400px;
+}
+
+.Tr {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    animation: miganie 1s linear infinite alternate;
+}
+
+@keyframes miganie {
+    from {
+        opacity: .6
+    }
+    to {
+        opacity: 1;
+    }
+}

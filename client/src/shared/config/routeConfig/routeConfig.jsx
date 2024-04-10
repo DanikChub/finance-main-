@@ -5,8 +5,10 @@ import { CategoriesPage } from "../../../pages/CategoriesPage";
 import { LoginPage } from "../../../pages/LoginPage";
 import { UserPage } from "../../../pages/UserPage";
 import {RegistrationPage} from "../../../pages/RegistrationPage";
-import {MAIN_ROUTE, ACCOUNTS_ROUTE, GRAFICS_ROUTE, CATEGORIES_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, USER_ROUTE, MAKE_INCOME_ROUTE} from '../../../shared/utils/consts/consts'
+import {MAIN_ROUTE, MAKE_CATEGORY_ROUTE, ACCOUNTS_ROUTE, GRAFICS_ROUTE, CATEGORIES_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, USER_ROUTE, MAKE_INCOME_ROUTE, INCOMES_ROUTE} from '../../../shared/utils/consts/consts'
 import { MakeIncome } from "../../../pages/MakeIncome";
+import { MakeCategoriesPage } from "../../../pages/MakeCategoriesPage.jsx";
+import IncomesPage from "../../../pages/IncomesPage/ui/IncomesPage.jsx";
 
 
 export const routeConfig = [
@@ -33,6 +35,16 @@ export const routeConfig = [
     {
         path: MAKE_INCOME_ROUTE,
         element: <MakeIncome/>
+    }
+    ,
+    {
+        path: MAKE_CATEGORY_ROUTE,
+        element: <MakeCategoriesPage/>
+    }
+    ,
+    {
+        path: INCOMES_ROUTE + '/:id',
+        element: <IncomesPage/>
     }
 ]
 

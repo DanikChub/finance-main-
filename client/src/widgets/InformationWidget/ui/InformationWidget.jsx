@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const InformationWidget = ({periodActive, setPeriodActive, arrayDataWithPeriod}) => {
+const InformationWidget = ({periodActive, setPeriodActive, arrayDataWithPeriod, isLoaded, setIsLoaded}) => {
     
     const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const InformationWidget = ({periodActive, setPeriodActive, arrayDataWithPeriod})
                 <div onClick={() => setPeriodActive('year')}  className={classNames(cls.PeriodChildren, {}, [periodActive=='year'?cls.periodActive:''])}>Год</div>
             </div>
             
-            <Canvas canvasHeight={220} canvasWidth={310} periodActive={periodActive} arrayDataWithPeriod={arrayDataWithPeriod}/>
+            <Canvas isLoaded={isLoaded} setIsLoaded={setIsLoaded} canvasHeight={220} canvasWidth={310} periodActive={periodActive} arrayDataWithPeriod={arrayDataWithPeriod}/>
                 
             <div onClick={() => navigate('/make_income')} className={classNames(cls.Button, {}, [])}>
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 128 128">
