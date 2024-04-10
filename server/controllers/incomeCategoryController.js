@@ -30,6 +30,7 @@ class incomeCategoryControllerClass {
         }
         return res.json(error.array_id);    
     }
+    
     async getAllWithParametr(req, res) {
         const parseArrayId = JSON.parse(req.query.array_id);
         
